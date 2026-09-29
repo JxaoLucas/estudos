@@ -1,0 +1,22 @@
+info:
+  name: Get Token
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:8080/auth/login
+  body:
+    type: json
+    data: |-
+      {
+        "username": "joao",
+        "password": "$2a$10$7vxX8Gpxl8KodgwdSEJG0.LqhaAgBbIkZmBLonpPph..WKtlDXVSS"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
