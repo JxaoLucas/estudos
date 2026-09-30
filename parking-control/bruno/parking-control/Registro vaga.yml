@@ -11,13 +11,15 @@ http:
     data: |-
       {
         "parkingSpotNumber": "110A",
-        "licensePlateCar": "UHE6287",
-        "brandCar": "hyundai",
-        "modelCar": "hb20",
-        "colorCar": "red",
         "responsibleName": "Pedro Souza",
         "apartment": "110",
-        "block": "A"
+        "block": "A",
+        "carro": {
+          "licensePlate": "UHE6287",
+          "brand": "hyundai",
+          "model": "hb20",
+          "color": "red"
+        }
       }
   auth: inherit
 

@@ -1,53 +1,23 @@
 package com.example.parking_control.services;
 
+import com.example.parking_control.models.ParkingSpotModel;
+
 import java.util.Optional;
 import java.util.UUID;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
-import com.example.parking_control.models.ParkingSpotModel;
-import com.example.parking_control.repositories.ParkingSpotRepository;
+public interface ParkingSpotService {
+    ParkingSpotModel save(ParkingSpotModel parkingSpotModel);
 
-import jakarta.transaction.Transactional;
+    boolean existsByParkingSpotNumber(String parkingSpotNumber);
 
-@Service
-public class ParkingSpotService {
+    boolean existsByApartmentAndBlock(String apartment, String block);
 
-    final ParkingSpotRepository parkingSpotRepository;
+    Page<ParkingSpotModel> findAll(Pageable pageable);
 
-    public ParkingSpotService(ParkingSpotRepository parkingSpotRepository) {
-        this.parkingSpotRepository = parkingSpotRepository;
-    }
+    Optional<ParkingSpotModel> findById(UUID id);
 
-    @Transactional
-    public ParkingSpotModel save(ParkingSpotModel parkingSpotModel) {
-        return parkingSpotRepository.save(parkingSpotModel);
-    }
-
-    public boolean existsByLicensePlateCar(String licensePlateCar) {
-        return parkingSpotRepository.existsByLicensePlateCar(licensePlateCar);
-    }
-
-    public boolean existsByParkingSpotNumber(String parkingSpotNumber) {
-        return parkingSpotRepository.existsByParkingSpotNumber(parkingSpotNumber);
-    }
-
-    public boolean existsByApartmentAndBlock(String apartment, String block) {
-        return parkingSpotRepository.existsByApartmentAndBlock(apartment, block);
-    }
-
-    public Page<ParkingSpotModel> findAll(Pageable pageable) {
-        return parkingSpotRepository.findAll(pageable);
-    }
-
-    public Optional<ParkingSpotModel> findById(UUID id) {
-        return parkingSpotRepository.findById(id);
-    }
-
-    @Transactional
-    public void delete(ParkingSpotModel parkingSpotModel) {
-        parkingSpotRepository.delete(parkingSpotModel);
-    }
-
+    void delete(ParkingSpotModel parkingSpotModel);
 }

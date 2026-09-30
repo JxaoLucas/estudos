@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.parking_control.dtos.ParkingSpotDto;
+import com.example.parking_control.models.CarroModel;
 import com.example.parking_control.models.ParkingSpotModel;
 import com.example.parking_control.services.ParkingSpotService;
+import com.example.parking_control.validations.OnCreate;
 
 import jakarta.validation.Valid;
 
@@ -41,21 +44,15 @@ public class ParkingSpotController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotDto parkingSpotDto) {
+    public ResponseEntity<Object> saveParkingSpot(
+            @RequestBody @Validated(OnCreate.class) ParkingSpotDto parkingSpotDto) {
 
-        if (parkingSpotService.existsByLicensePlateCar(parkingSpotDto.getLicensePlateCar())) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Erro: Placa de veiculo já cadastrada!");
-        }
-        if (parkingSpotService.existsByParkingSpotNumber(parkingSpotDto.getParkingSpotNumber())) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Erro: Vaga de estacionamento já está em uso");
-        }
-        if (parkingSpotService.existsByApartmentAndBlock(parkingSpotDto.getApartment(), parkingSpotDto.getBlock())) {
-            return ResponseEntity.status(HttpStatus.CONFLICT)
-                    .body("Erro: Vaga de estacionamento já cadastrada para esse apartamento/bloco");
-        }
+        var carroModel = new CarroModel();
+        BeanUtils.copyProperties(parkingSpotDto.getCarro(), carroModel);
 
         var parkingSpotModel = new ParkingSpotModel();
         BeanUtils.copyProperties(parkingSpotDto, parkingSpotModel);
+        parkingSpotModel.setCarro(carroModel);
         parkingSpotModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(parkingSpotService.save(parkingSpotModel));
     }
@@ -96,6 +93,13 @@ public class ParkingSpotController {
         BeanUtils.copyProperties(parkingSpotDto, parkingSpotModel);
         parkingSpotModel.setId(parkingSpotModelOptional.get().getId());
         parkingSpotModel.setRegistrationDate(parkingSpotModelOptional.get().getRegistrationDate());
+
+        var carroModel = new CarroModel();
+        BeanUtils.copyProperties(parkingSpotDto.getCarro(), carroModel);
+        if (parkingSpotModelOptional.get().getCarro() != null) {
+            carroModel.setId(parkingSpotModelOptional.get().getCarro().getId());
+        }
+        parkingSpotModel.setCarro(carroModel);
 
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.save(parkingSpotModel));
     }

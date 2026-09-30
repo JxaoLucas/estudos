@@ -1,25 +1,19 @@
 package com.example.parking_control.dtos;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import com.example.parking_control.validations.ApartmentBlockAvailable;
+import com.example.parking_control.validations.OnCreate;
+import com.example.parking_control.validations.ParkingSpotNumberAvailable;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+@ApartmentBlockAvailable(groups = OnCreate.class)
 public class ParkingSpotDto {
 
     @NotBlank
+    @ParkingSpotNumberAvailable(groups = OnCreate.class)
     private String parkingSpotNumber;
-
-    @NotBlank
-    @Size(max = 7)
-    private String licensePlateCar;
-
-    @NotBlank
-    private String brandCar;
-
-    @NotBlank
-    private String modelCar;
-
-    @NotBlank
-    private String colorCar;
 
     @NotBlank
     private String responsibleName;
@@ -30,44 +24,24 @@ public class ParkingSpotDto {
     @NotBlank
     private String block;
 
+    @Valid
+    @NotNull
+    private CarroDto carro;
+
+    public CarroDto getCarro() {
+        return carro;
+    }
+
+    public void setCarro(CarroDto carro) {
+        this.carro = carro;
+    }
+
     public String getParkingSpotNumber() {
         return parkingSpotNumber;
     }
 
     public void setParkingSpotNumber(String parkingSpotNumber) {
         this.parkingSpotNumber = parkingSpotNumber;
-    }
-
-    public String getLicensePlateCar() {
-        return licensePlateCar;
-    }
-
-    public void setLicensePlateCar(String licensePlateCar) {
-        this.licensePlateCar = licensePlateCar;
-    }
-
-    public String getBrandCar() {
-        return brandCar;
-    }
-
-    public void setBrandCar(String brandCar) {
-        this.brandCar = brandCar;
-    }
-
-    public String getModelCar() {
-        return modelCar;
-    }
-
-    public void setModelCar(String modelCar) {
-        this.modelCar = modelCar;
-    }
-
-    public String getColorCar() {
-        return colorCar;
-    }
-
-    public void setColorCar(String colorCar) {
-        this.colorCar = colorCar;
     }
 
     public String getResponsibleName() {

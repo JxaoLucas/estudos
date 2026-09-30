@@ -5,21 +5,23 @@ info:
 
 http:
   method: PUT
-  url: http://localhost:8080/parking-spot/e12bbd65-9c0e-42e9-a061-db26feba7409
+  url: http://localhost:8080/parking-spot/7df5c2cf-1d3f-46f9-9760-41471e84ec51
   body:
     type: json
     data: |-
       {
         "apartment": "110",
         "block": "A",
-        "brandCar": "hyundai",
-        "colorCar": "red",
-        "id": "e12bbd65-9c0e-42e9-a061-db26feba7409",
-        "licensePlateCar": "ZZZ9876",
-        "modelCar": "hb20",
+        "id": "7df5c2cf-1d3f-46f9-9760-41471e84ec51",
         "parkingSpotNumber": "110A",
         "registrationDate": "2026-09-30T17:57:02.890539",
-        "responsibleName": "Pedro Souza"
+        "responsibleName": "Pedro",
+        "carro": {  
+          "brand": "hyundai",
+          "color": "red",
+          "licensePlate": "ZZZ9876",
+          "model": "hb20"
+        }
       }
   auth: inherit
 
