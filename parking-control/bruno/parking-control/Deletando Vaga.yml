@@ -1,0 +1,15 @@
+info:
+  name: Deletando Vaga
+  type: http
+  seq: 1
+
+http:
+  method: DELETE
+  url: http://localhost:8080/parking-spot/73ed7487-7f38-4b50-91e9-81ead7b38cc9
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

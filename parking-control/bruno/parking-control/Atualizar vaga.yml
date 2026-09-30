@@ -1,0 +1,30 @@
+info:
+  name: Atualizar vaga
+  type: http
+  seq: 1
+
+http:
+  method: PUT
+  url: http://localhost:8080/parking-spot/e12bbd65-9c0e-42e9-a061-db26feba7409
+  body:
+    type: json
+    data: |-
+      {
+        "apartment": "110",
+        "block": "A",
+        "brandCar": "hyundai",
+        "colorCar": "red",
+        "id": "e12bbd65-9c0e-42e9-a061-db26feba7409",
+        "licensePlateCar": "ZZZ9876",
+        "modelCar": "hb20",
+        "parkingSpotNumber": "110A",
+        "registrationDate": "2026-09-30T17:57:02.890539",
+        "responsibleName": "Pedro Souza"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

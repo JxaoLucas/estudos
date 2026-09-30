@@ -1,0 +1,28 @@
+info:
+  name: Registro vaga
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:8080/parking-spot
+  body:
+    type: json
+    data: |-
+      {
+        "parkingSpotNumber": "110A",
+        "licensePlateCar": "UHE6287",
+        "brandCar": "hyundai",
+        "modelCar": "hb20",
+        "colorCar": "red",
+        "responsibleName": "Pedro Souza",
+        "apartment": "110",
+        "block": "A"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
