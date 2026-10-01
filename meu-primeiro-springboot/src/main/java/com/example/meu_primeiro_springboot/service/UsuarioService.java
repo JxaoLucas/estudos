@@ -29,4 +29,8 @@ public class UsuarioService {
     public Optional<Usuario> buscarPorUsername(String username) {
         return usuarioRepository.findByUsername(username);
     }
+
+    public boolean senhaConfere(Usuario usuario, String senhaDigitada) {
+        return passwordEncoder.matches(senhaDigitada, usuario.getPassword());
+    }
 }

@@ -7,16 +7,34 @@
 secrets/
 *.pem
 *.key
+*.p12
+*.jks
+*.keystore
+credentials.json
 
 # Segredos de ambiente do Bruno API Client
 .bruno/environments/*.secret.bru
 bruno/environments/*.secret.bru
+**/bruno/environments/
 
 # Configurações com segredos do Spring Boot
 application-*.yml
+application-*.yaml
 application-*.properties
 !application-example.yml
+!application-example.yaml
 !application-example.properties
+
+# ==========================================
+# BANCOS DE DADOS E ARQUIVOS COMPACTADOS
+# ==========================================
+*.db
+*.sqlite
+*.dump
+*.zip
+*.tar.gz
+*.rar
+*.7z
 
 # ==========================================
 # DOCUMENTAÇÃO TEMPORÁRIA E LOGS
@@ -30,7 +48,10 @@ logs/
 # ==========================================
 target/
 build/
+out/
+bin/
 .gradle/
+.kotlin/
 *.class
 *.jar
 *.war
@@ -52,6 +73,12 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+
+# ==========================================
+# FERRAMENTAS DE IA
+# ==========================================
+.agents/
+skills-lock.json
 
 # ==========================================
 # IDEs E EDITORES DE CÓDIGO

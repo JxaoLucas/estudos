@@ -8,7 +8,7 @@ http:
   url: http://localhost:8080/api/produtos/1
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2FvIiwiZXhwIjoxNzkwODAyMjU2fQ.P-OpHdsT9qFZlgtmw4p7Qks8qwfyHklFY09vdCt4H64
+    token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb2FvIiwiZXhwIjoxNzkwOTc0Mjk3fQ.2xgk7wpVPXPznXwcCLiEaacfTXylewjEm2jRhQkZVc8
 
 settings:
   encodeUrl: true
