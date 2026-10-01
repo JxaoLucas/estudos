@@ -1,0 +1,19 @@
+info:
+  name: Get All Books
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: http://localhost:8080/books
+  headers:
+    - name: X-API-VERSION
+      value: v1
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

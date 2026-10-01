@@ -1,0 +1,24 @@
+info:
+  name: Create Book
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:8080/books
+  body:
+    type: json
+    data: |-
+      {
+        "title": "Hábitos Atomicos",
+        "author": "James Clear",
+        "publisher": "Editora Alta Life",
+        "publicationYear": 2019
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
