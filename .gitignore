@@ -1,15 +1,68 @@
-### IntelliJ IDEA ###
-.idea/
-*.iml
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+# ==========================================
+# SEGREDOS, VARIÁVEIS DE AMBIENTE E BRUNO
+# ==========================================
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+
+# Segredos de ambiente do Bruno API Client
+.bruno/environments/*.secret.bru
+bruno/environments/*.secret.bru
+
+# Configurações com segredos do Spring Boot
+application-*.yml
+application-*.properties
+!application-example.yml
+!application-example.properties
+
+# ==========================================
+# DOCUMENTAÇÃO TEMPORÁRIA E LOGS
+# ==========================================
+HELP.md
+*.log
+logs/
+
+# ==========================================
+# COMPILAÇÃO, BUILD E DEPENDÊNCIAS
+# ==========================================
+target/
+build/
+.gradle/
 *.class
+*.jar
+*.war
+*.ear
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-### Kotlin ###
-.kotlin/
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-### Eclipse ###
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ==========================================
+# IDEs E EDITORES DE CÓDIGO
+# ==========================================
+# IntelliJ IDEA
+.idea
+*.iws
+*.iml
+*.ipr
+
+# Eclipse / Spring Tool Suite (STS)
 .apt_generated
 .classpath
 .factorypath
@@ -17,28 +70,22 @@ out/
 .settings
 .springBeans
 .sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
 
-### NetBeans ###
+# NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
 
-### VS Code ###
+# VS Code & Outros
 .vscode/
+.antigravity/
+.neon
 
-### Mac OS ###
+# ==========================================
+# ARQUIVOS DO SISTEMA OPERACIONAL
+# ==========================================
 .DS_Store
-
-### Environment / Secrets ###
-.env
-.env.*
-!.env.example
-
-### Build ###
-target/
-build/
+Thumbs.db
+desktop.ini
